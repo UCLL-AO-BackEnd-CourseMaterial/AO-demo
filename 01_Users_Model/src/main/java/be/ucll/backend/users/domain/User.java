@@ -1,4 +1,4 @@
-package be.ucll.backend.usersmodel;
+package be.ucll.backend.users.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ public class User {
     private int age;
     private List<Integer> membershipYears = new ArrayList<Integer>();
 
-    public int countMembershipYearsAfter1999 () {
+    public int countMembershipYearsAfter1999() {
         int result = 0;
-        for(Integer year: membershipYears) {
+        for (Integer year : membershipYears) {
             if (year > 1999)
                 result++;
         }
@@ -20,15 +20,15 @@ public class User {
 
     public User(String name, int age) {
         this.name = name;
-        if (age >= 0) 
+        if (age >= 0)
             this.age = age;
     }
 
-    public int countYearsOfMembership () {
+    public int countYearsOfMembership() {
         return membershipYears.size();
     }
 
-    public void addMembershipYear (int year) {
+    public void addMembershipYear(int year) {
         membershipYears.add(year);
     }
 
@@ -36,7 +36,7 @@ public class User {
         return this.age;
     }
 
-    public String getName () {
+    public String getName() {
         return name;
     }
 

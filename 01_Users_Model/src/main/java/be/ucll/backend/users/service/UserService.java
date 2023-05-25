@@ -45,7 +45,10 @@ public class UserService {
     }
 
     public User getUserWithName(String name) {
-        return userRepository.stream().filter(user -> user.getName().equals(name)).toList().get(0);
+        if (userRepository.size() > 0)
+            return userRepository.stream().filter(user -> user.getName().equals(name)).toList().get(0);
+        else
+            return null;
     }
 
     public boolean addUser(User user) {

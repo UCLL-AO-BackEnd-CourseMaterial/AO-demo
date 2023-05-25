@@ -1,9 +1,9 @@
-package be.ucll.backend.usersmodel;
-// import java.util.ArrayList;
-// import java.util.List;
+package be.ucll.backend.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import be.ucll.backend.users.domain.User;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -22,7 +22,7 @@ public class DemoApplication {
 
 		User yuki = new User("Yuki", 12);
 		System.out.println("User with name " + yuki.getName() + " is " + yuki.getAge() + " years old");
-		
+
 		User eric = new User("Eric", 65);
 		System.out.println(eric.getName());
 

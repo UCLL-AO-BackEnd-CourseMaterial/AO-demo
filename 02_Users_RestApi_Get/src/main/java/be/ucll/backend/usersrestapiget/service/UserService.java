@@ -1,6 +1,8 @@
-package be.ucll.backend.usersrestapiget;
+package be.ucll.backend.usersrestapiget.service;
 
 import org.springframework.stereotype.Service;
+
+import be.ucll.backend.usersrestapiget.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +29,12 @@ public class UserService {
     }
 
     public List<User> getUsersWithAgeOlderThan(int age) {
-        return userRepository.stream().filter(user -> user.getAge()>age).toList();
+        return userRepository.stream().filter(user -> user.getAge() > age).toList();
     }
 
     public User getOldestUser() {
         User oldest = null;
-        if (userRepository.size()>0) {
+        if (userRepository.size() > 0) {
             oldest = userRepository.get(0);
             for (User user : userRepository) {
                 if (user.getAge() > oldest.getAge())
@@ -43,7 +45,10 @@ public class UserService {
     }
 
     public User getUserWithName(String name) {
-        return userRepository.stream().filter(user -> user.getName().equals(name)).toList().get(0);
+        if (userRepository.size() > 0)
+            return userRepository.stream().filter(user -> user.getName().equals(name)).toList().get(0);
+        else
+            return null;
     }
 
     public boolean addUser(User user) {
