@@ -1,7 +1,8 @@
 package be.ucll.backend.usersrestapiget;
 
-import be.ucll.backend.usersrestapiget.User;
-import be.ucll.backend.usersrestapiget.UserService;
+import be.ucll.backend.usersrestapiget.domain.User;
+import be.ucll.backend.usersrestapiget.service.UserService;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -14,7 +15,7 @@ class UserServiceTest {
 
     @Test
     void given4Users_whenNewUserIsAdded_thenUserIsAdded() {
-        //given
+        // given
         UserService service = new UserService();
         service.addUser(new User("Elke", 44));
         service.addUser(new User("Miyo", 15));
@@ -22,28 +23,28 @@ class UserServiceTest {
         service.addUser(new User("Yuki", 13));
         assertEquals(4, service.getAllUsers().size());
 
-        //when
+        // when
         User elke = new User("Elke", 44);
         service.addUser(elke);
 
-        //then
+        // then
         assertEquals(5, service.getAllUsers().size());
         assertTrue(service.getAllUsers().contains(elke));
     }
 
     @Test
     void given4UsersWhere2UsersWithAge44_whenSearchForUsersOfAgeAfter43_then2UsersAreReturned() {
-        //given
+        // given
         UserService service = new UserService();
         service.addUser(new User("Elke", 44));
         service.addUser(new User("Miyo", 15));
         service.addUser(new User("Eric", 65));
         service.addUser(new User("Yuki", 13));
 
-        //when
+        // when
         List<User> usersAged44 = service.getUsersWithAgeOlderThan(43);
 
-        //then
+        // then
         assertEquals(2, usersAged44.size());
         assertTrue(containsUserWithName(usersAged44, "Elke"));
         assertTrue(containsUserWithName(usersAged44, "Eric"));
@@ -52,17 +53,17 @@ class UserServiceTest {
 
     @Test
     void given4Users_whenSearchForOldestUser_thenOldestUserIsReturned() {
-        //given
+        // given
         UserService service = new UserService();
         service.addUser(new User("Elke", 44));
         service.addUser(new User("Miyo", 15));
         service.addUser(new User("Eric", 65));
         service.addUser(new User("Yuki", 13));
 
-        //when
+        // when
         User oldestUser = service.getOldestUser();
 
-        //then
+        // then
         assertEquals(65, oldestUser.getAge());
         assertEquals("Eric", oldestUser.getName());
     }
