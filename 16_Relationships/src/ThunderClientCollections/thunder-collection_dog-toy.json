@@ -1,0 +1,61 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "dog-toy",
+    "dateExported": "2023-04-25T18:49:00.085Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3d4244b6-9778-4c34-93f3-f0fa9eb33345",
+            "colId": "f2ba2c06-2bed-46f6-8111-c36dbf1f8542",
+            "containerId": "",
+            "name": "addDog",
+            "url": "http://localhost:8080/api/dog",
+            "method": "POST",
+            "sortNum": 5000,
+            "created": "2023-04-24T17:37:12.911Z",
+            "modified": "2023-04-24T17:37:51.083Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{ \"name\":\"Tommie\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0391cd6f-4c85-4e98-8de6-561b660ea5c6",
+            "colId": "f2ba2c06-2bed-46f6-8111-c36dbf1f8542",
+            "containerId": "",
+            "name": "addToyToDog",
+            "url": "http://localhost:8080/api/dog/1/toy",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-04-24T17:37:12.912Z",
+            "modified": "2023-04-24T18:01:22.531Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{     \"name\":\"sugar\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "59a8082e-309e-411e-8211-9e4b3ca1d69d",
+            "colId": "f2ba2c06-2bed-46f6-8111-c36dbf1f8542",
+            "containerId": "",
+            "name": "deleteDog",
+            "url": "http://localhost:8080/api/dog/1",
+            "method": "DELETE",
+            "sortNum": 20000,
+            "created": "2023-04-24T17:48:26.077Z",
+            "modified": "2023-04-24T18:01:37.490Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

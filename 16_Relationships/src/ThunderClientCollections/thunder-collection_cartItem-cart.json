@@ -1,0 +1,66 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "cartItem-cart",
+    "dateExported": "2023-04-25T18:48:52.614Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "41fa2f32-8503-45d2-80bc-290b79150353",
+            "colId": "6f4e666b-b08f-4dbe-a2be-c6c4b0fc96ff",
+            "containerId": "",
+            "name": "addCart",
+            "url": "http://localhost:8080/api/cart",
+            "method": "POST",
+            "sortNum": 5000,
+            "created": "2023-04-24T15:34:29.318Z",
+            "modified": "2023-04-24T17:09:03.579Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "97dc0220-af8b-4083-bdf4-ba79923f038b",
+            "colId": "6f4e666b-b08f-4dbe-a2be-c6c4b0fc96ff",
+            "containerId": "",
+            "name": "addCartItemToCart",
+            "url": "http://localhost:8080/api/cart/1/cartItem",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-04-24T15:34:29.317Z",
+            "modified": "2023-04-24T18:23:07.697Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{     \"name\":\"sugar\",\n     \"amount\":3,\n     \"price\":5\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "023e6ffc-76f2-4e42-9a88-3d3cd467b6de",
+            "colId": "6f4e666b-b08f-4dbe-a2be-c6c4b0fc96ff",
+            "containerId": "",
+            "name": "removeCart",
+            "url": "http://localhost:8080/api/cart/1",
+            "method": "DELETE",
+            "sortNum": 20000,
+            "created": "2023-04-24T18:10:35.099Z",
+            "modified": "2023-04-24T18:23:13.531Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
