@@ -5,10 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>be.ucll.backend</groupId>
+        <groupId>be.ucll.backend-AO</groupId>
         <artifactId>demo</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
 
     <groupId>be.ucll</groupId>
     <artifactId>Relationships</artifactId>
