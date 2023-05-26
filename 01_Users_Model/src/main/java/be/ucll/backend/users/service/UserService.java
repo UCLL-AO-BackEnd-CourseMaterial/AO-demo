@@ -13,14 +13,14 @@ public class UserService {
     private List<User> userRepository = new ArrayList<>();
 
     public UserService() {
-        User elke = new User("Elke", 44);
-        User miyo = new User("Miyo", 15);
-        User eric = new User("Eric", 65);
-        User yuki = new User("Yuki", 13);
-        addUser(elke);
-        addUser(miyo);
-        addUser(eric);
-        addUser(yuki);
+        User amelia = new User("Amelia", 44);
+        User ben = new User("Ben", 15);
+        User charles = new User("Charles", 65);
+        User diana = new User("Diana", 13);
+        addUser(amelia);
+        addUser(ben);
+        addUser(charles);
+        addUser(diana);
 
     }
 

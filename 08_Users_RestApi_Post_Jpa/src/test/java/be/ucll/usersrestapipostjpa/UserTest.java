@@ -7,71 +7,71 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class UserTest {
 
-    //given
-    private String validNameElke = "Elke";
-    private int validAgeElke = 44;
+    // given
+    private String validNameAmelia = "Amelia";
+    private int validAgeAmelia = 44;
 
-    //constructor
-    //happy case
+    // constructor
+    // happy case
     @Test
     void givenValidValues_whenCreatingUser_thenUserIsCreatedWithThoseValues() {
-        //when
-        User elke = new User(validNameElke, validAgeElke);
-    
-        //then
+        // when
+        User elke = new User(validNameAmelia, validAgeAmelia);
+
+        // then
         assertNotNull(elke);
-        assertEquals(validNameElke, elke.getName());
-        assertEquals(validAgeElke, elke.getAge());
+        assertEquals(validNameAmelia, elke.getName());
+        assertEquals(validAgeAmelia, elke.getAge());
         assertEquals(0, elke.countYearsOfMembership());
     }
-    
-    //constructor
-    //unhappy case
-    //invalid negative age
+
+    // constructor
+    // unhappy case
+    // invalid negative age
     @Test
     void givenInvalidNegativeAge_whenCreatingUser_thenUserIsCreatedWithAge0() {
-        //when
-        User elke = new User(validNameElke, -5);
-    
-        //then
+        // when
+        User elke = new User(validNameAmelia, -5);
+
+        // then
         assertNotNull(elke);
-        assertEquals(validNameElke, elke.getName());
+        assertEquals(validNameAmelia, elke.getName());
         assertEquals(0, elke.getAge());
         assertEquals(0, elke.countYearsOfMembership());
     }
-    
-    //countMembershipYearsAfter1999
-    //happy case
+
+    // countMembershipYearsAfter1999
+    // happy case
     @Test
-    void givenUserWithMemberschipYearsAfter1999_whenAskForMembershipYearsAfter1999_thenCorrectNumberIsReturned(){
-        //given
-        User elke = new User(validNameElke, validAgeElke);
+    void givenUserWithMemberschipYearsAfter1999_whenAskForMembershipYearsAfter1999_thenCorrectNumberIsReturned() {
+        // given
+        User elke = new User(validNameAmelia, validAgeAmelia);
         elke.addMembershipYear(2003);
         elke.addMembershipYear(1999);
         elke.addMembershipYear(2000);
 
-        //when
+        // when
         int result = elke.countMembershipYearsAfter1999();
 
-        //then
+        // then
         assertEquals(2, result);
     }
 
-    //countMembershipYearsAfter1999
-    //unhappy case
-    //no membership years after 1999
+    // countMembershipYearsAfter1999
+    // unhappy case
+    // no membership years after 1999
     @Test
-    void givenUserWithNoMemberschipYearsAfter1999_whenAskForMembershipYearsAfter1999_then0IsReturned(){
-        //given
-        User elke = new User(validNameElke, validAgeElke);
+    void givenUserWithNoMemberschipYearsAfter1999_whenAskForMembershipYearsAfter1999_then0IsReturned() {
+        // given
+        User elke = new User(validNameAmelia, validAgeAmelia);
         elke.addMembershipYear(1999);
         elke.addMembershipYear(1978);
 
-        //when
+        // when
         int result = elke.countMembershipYearsAfter1999();
 
-        //then
+        // then
         assertEquals(0, result);
     }
-    
+
 }

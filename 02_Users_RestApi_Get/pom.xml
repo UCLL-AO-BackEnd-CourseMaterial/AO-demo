@@ -10,8 +10,8 @@
 
     <artifactId>UsersRestApiGet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>01_Users_UsersRestApiGet</name>
-    <description>01_Users_UsersRestApiGet</description>
+    <name>02_Users_RestApiGet</name>
+    <description>02_Users_RestApiGet</description>
     <packaging>jar</packaging>
 
     <dependencies>

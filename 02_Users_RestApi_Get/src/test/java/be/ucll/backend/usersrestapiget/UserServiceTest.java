@@ -17,55 +17,55 @@ class UserServiceTest {
     void given4Users_whenNewUserIsAdded_thenUserIsAdded() {
         // given
         UserService service = new UserService();
-        service.addUser(new User("Elke", 44));
-        service.addUser(new User("Miyo", 15));
-        service.addUser(new User("Eric", 65));
-        service.addUser(new User("Yuki", 13));
+        service.addUser(new User("Amelia", 44));
+        service.addUser(new User("Ben", 15));
+        service.addUser(new User("Charles", 65));
+        service.addUser(new User("Diana", 13));
         assertEquals(4, service.getAllUsers().size());
 
         // when
-        User elke = new User("Elke", 44);
-        service.addUser(elke);
+        User amelia = new User("Amelia", 44);
+        service.addUser(amelia);
 
         // then
         assertEquals(5, service.getAllUsers().size());
-        assertTrue(service.getAllUsers().contains(elke));
+        assertTrue(service.getAllUsers().contains(amelia));
     }
 
     @Test
     void given4UsersWhere2UsersWithAge44_whenSearchForUsersOfAgeAfter43_then2UsersAreReturned() {
         // given
         UserService service = new UserService();
-        service.addUser(new User("Elke", 44));
-        service.addUser(new User("Miyo", 15));
-        service.addUser(new User("Eric", 65));
-        service.addUser(new User("Yuki", 13));
+        service.addUser(new User("Amelia", 44));
+        service.addUser(new User("Ben", 15));
+        service.addUser(new User("Charles", 65));
+        service.addUser(new User("Diana", 13));
 
         // when
         List<User> usersAged44 = service.getUsersWithAgeOlderThan(43);
 
         // then
         assertEquals(2, usersAged44.size());
-        assertTrue(containsUserWithName(usersAged44, "Elke"));
-        assertTrue(containsUserWithName(usersAged44, "Eric"));
-        assertFalse(containsUserWithName(usersAged44, "Miyo"));
+        assertTrue(containsUserWithName(usersAged44, "Amelia"));
+        assertTrue(containsUserWithName(usersAged44, "Charles"));
+        assertFalse(containsUserWithName(usersAged44, "Ben"));
     }
 
     @Test
     void given4Users_whenSearchForOldestUser_thenOldestUserIsReturned() {
         // given
         UserService service = new UserService();
-        service.addUser(new User("Elke", 44));
-        service.addUser(new User("Miyo", 15));
-        service.addUser(new User("Eric", 65));
-        service.addUser(new User("Yuki", 13));
+        service.addUser(new User("Amelia", 44));
+        service.addUser(new User("Ben", 15));
+        service.addUser(new User("Charles", 65));
+        service.addUser(new User("Diana", 13));
 
         // when
         User oldestUser = service.getOldestUser();
 
         // then
         assertEquals(65, oldestUser.getAge());
-        assertEquals("Eric", oldestUser.getName());
+        assertEquals("Charles", oldestUser.getName());
     }
 
     private boolean containsUserWithName(List<User> users, String name) {

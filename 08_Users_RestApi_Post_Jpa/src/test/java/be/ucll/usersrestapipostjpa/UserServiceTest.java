@@ -24,49 +24,49 @@ public class UserServiceTest {
     @Test
     public void givenNoUsers_whenValidUserAdded_ThenUserIsAddedAndUserIsReturned() {
         // given
-        User elke = new User("Elke", 45);
+        User amelia = new User("Amelia", 45);
         // mock all methods that are called in method that is tested here
-        when(userRepository.save(elke)).thenReturn(elke);
+        when(userRepository.save(amelia)).thenReturn(amelia);
 
         // when
-        User addedUser = userService.addUser(elke);
+        User addedUser = userService.addUser(amelia);
 
         // then
-        assertEquals(elke.getName(), addedUser.getName());
+        assertEquals(amelia.getName(), addedUser.getName());
     }
 
     @Test
     public void givenUsersWhith1UserOlderThan20_whenGetUsersOlderThan20_thenListWith1UserOlderThan20IsReturned() {
-        //given
-        User elke = new User("Elke", 45);
-        User miyo = new User("Miyo", 15);
+        // given
+        User amelia = new User("Amelia", 45);
+        User ben = new User("Ben", 15);
         List<User> usersAbove20 = new ArrayList<User>();
-        usersAbove20.add(elke);
+        usersAbove20.add(amelia);
         when(userRepository.findUsersByAgeAfter(20)).thenReturn(usersAbove20);
 
-        //when
+        // when
         List<User> result = userService.getUsersWithAgeOlderThan(20);
 
-        //then
+        // then
         assertEquals(usersAbove20.size(), result.size());
-        assertTrue(result.contains(elke));
-        assertFalse(result.contains(miyo));
+        assertTrue(result.contains(amelia));
+        assertFalse(result.contains(ben));
     }
 
     @Test
     public void givenUsersWhithNoUsersOlderThan20_whenGetUsersOlderThan20_thenEmptyListIsReturned() {
-        //given
-        User yuki = new User("Yuki", 13);
-        User miyo = new User("Miyo", 15);
+        // given
+        User ben = new User("Ben", 13);
+        User diana = new User("Diana", 15);
         List<User> usersAbove20 = new ArrayList<User>();
         when(userRepository.findUsersByAgeAfter(20)).thenReturn(usersAbove20);
 
-        //when
+        // when
         List<User> result = userService.getUsersWithAgeOlderThan(20);
 
-        //then
+        // then
         assertEquals(usersAbove20.size(), result.size());
-        assertFalse(result.contains(yuki));
-        assertFalse(result.contains(miyo));
+        assertFalse(result.contains(ben));
+        assertFalse(result.contains(diana));
     }
 }
