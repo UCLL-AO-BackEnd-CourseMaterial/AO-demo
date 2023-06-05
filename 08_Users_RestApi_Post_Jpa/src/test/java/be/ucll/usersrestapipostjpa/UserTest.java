@@ -18,13 +18,13 @@ class UserTest {
     @Test
     void givenValidValues_whenCreatingUser_thenUserIsCreatedWithThoseValues() {
         // when
-        User elke = new User(validNameAmelia, validAgeAmelia);
+        User amelia = new User(validNameAmelia, validAgeAmelia);
 
         // then
-        assertNotNull(elke);
-        assertEquals(validNameAmelia, elke.getName());
-        assertEquals(validAgeAmelia, elke.getAge());
-        assertEquals(0, elke.countYearsOfMembership());
+        assertNotNull(amelia);
+        assertEquals(validNameAmelia, amelia.getName());
+        assertEquals(validAgeAmelia, amelia.getAge());
+        assertEquals(0, amelia.countYearsOfMembership());
     }
 
     // constructor
@@ -33,13 +33,13 @@ class UserTest {
     @Test
     void givenInvalidNegativeAge_whenCreatingUser_thenUserIsCreatedWithAge0() {
         // when
-        User elke = new User(validNameAmelia, -5);
+        User amelia = new User(validNameAmelia, -5);
 
         // then
-        assertNotNull(elke);
-        assertEquals(validNameAmelia, elke.getName());
-        assertEquals(0, elke.getAge());
-        assertEquals(0, elke.countYearsOfMembership());
+        assertNotNull(amelia);
+        assertEquals(validNameAmelia, amelia.getName());
+        assertEquals(0, amelia.getAge());
+        assertEquals(0, amelia.countYearsOfMembership());
     }
 
     // countMembershipYearsAfter1999
@@ -47,13 +47,13 @@ class UserTest {
     @Test
     void givenUserWithMemberschipYearsAfter1999_whenAskForMembershipYearsAfter1999_thenCorrectNumberIsReturned() {
         // given
-        User elke = new User(validNameAmelia, validAgeAmelia);
-        elke.addMembershipYear(2003);
-        elke.addMembershipYear(1999);
-        elke.addMembershipYear(2000);
+        User amelia = new User(validNameAmelia, validAgeAmelia);
+        amelia.addMembershipYear(2003);
+        amelia.addMembershipYear(1999);
+        amelia.addMembershipYear(2000);
 
         // when
-        int result = elke.countMembershipYearsAfter1999();
+        int result = amelia.countMembershipYearsAfter1999();
 
         // then
         assertEquals(2, result);
@@ -65,12 +65,12 @@ class UserTest {
     @Test
     void givenUserWithNoMemberschipYearsAfter1999_whenAskForMembershipYearsAfter1999_then0IsReturned() {
         // given
-        User elke = new User(validNameAmelia, validAgeAmelia);
-        elke.addMembershipYear(1999);
-        elke.addMembershipYear(1978);
+        User amelia = new User(validNameAmelia, validAgeAmelia);
+        amelia.addMembershipYear(1999);
+        amelia.addMembershipYear(1978);
 
         // when
-        int result = elke.countMembershipYearsAfter1999();
+        int result = amelia.countMembershipYearsAfter1999();
 
         // then
         assertEquals(0, result);
