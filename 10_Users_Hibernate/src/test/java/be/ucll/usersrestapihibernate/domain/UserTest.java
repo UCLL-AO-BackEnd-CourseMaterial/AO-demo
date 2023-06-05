@@ -1,4 +1,4 @@
-package demo;
+package be.ucll.usersrestapihibernate.domain;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 
 public class UserTest {
 
@@ -29,14 +28,14 @@ public class UserTest {
         validatorFactory.close();
     }
 
-    //constructor
-    //happy case
+    // constructor
+    // happy case
     @Test
     void givenValidValues_whenCreatingUser_thenUserIsCreatedWithThoseValues() {
-        //when
+        // when
         User elke = new User("Elke", 45);
 
-        //then
+        // then
         assertNotNull(elke);
         assertEquals("Elke", elke.getName());
         assertEquals(45, elke.getAge());
@@ -44,15 +43,15 @@ public class UserTest {
         assertTrue(violations.isEmpty());
     }
 
-    //constructor
-    //unhappy case
-    //invalid negative age
+    // constructor
+    // unhappy case
+    // invalid negative age
     @Test
     void givenInvalidNegativeAge_whenCreatingUser_thenAgeViolationMessageIsThrown() {
-        //when
+        // when
         User eric = new User("Eric", -5);
- 
-        //then
+
+        // then
         Set<ConstraintViolation<User>> violations = validator.validate(eric);
         assertEquals(violations.size(), 1);
         ConstraintViolation<User> violation = violations.iterator().next();
@@ -61,15 +60,15 @@ public class UserTest {
         assertEquals(-5, violation.getInvalidValue());
     }
 
-    //constructor
-    //unhappy case
-    //invalid empty name ("    ")
+    // constructor
+    // unhappy case
+    // invalid empty name (" ")
     @Test
     void givenInvalidEmptyName_whenCreatingUser_thenNameViolationMessageIsThrown() {
-        //when
+        // when
         User eric = new User("    ", 65);
 
-        //then
+        // then
         Set<ConstraintViolation<User>> violations = validator.validate(eric);
         assertEquals(violations.size(), 1);
         ConstraintViolation<User> violation = violations.iterator().next();
@@ -78,15 +77,15 @@ public class UserTest {
         assertEquals("    ", violation.getInvalidValue());
     }
 
-    //constructor
-    //unhappy case
-    //invalid empty name ("")
+    // constructor
+    // unhappy case
+    // invalid empty name ("")
     @Test
     void givenInvalidNoName_whenCreatingUser_thenNameViolationMessageIsThrown() {
-        //when
+        // when
         User eric = new User("", 65);
 
-        //then
+        // then
         Set<ConstraintViolation<User>> violations = validator.validate(eric);
         assertEquals(violations.size(), 1);
         ConstraintViolation<User> violation = violations.iterator().next();

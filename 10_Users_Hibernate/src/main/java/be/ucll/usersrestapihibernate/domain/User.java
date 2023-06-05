@@ -1,4 +1,4 @@
-package demo;
+package be.ucll.usersrestapihibernate.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,42 +16,42 @@ import jakarta.validation.constraints.Positive;
 @Table(name = "users")
 public class User {
 
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     public long id;
 
-    @NotBlank(message="name may not be empty")
+    @NotBlank(message = "name may not be empty")
     private String name;
-    
+
     @Positive(message = "age may not be negative")
     private int age;
-    
+
     @Transient
     private List<Integer> membershipYears = new ArrayList<Integer>();
 
-    public User (){
+    public User() {
 
     }
-    
-    public User (String name, int age) {
-        this.name=name;
-        this.age=age;
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
-    public int countMembershipYearsAfter1999 () {
+    public int countMembershipYearsAfter1999() {
         int result = 0;
-        for(Integer year: membershipYears) {
+        for (Integer year : membershipYears) {
             if (year > 1999)
                 result++;
         }
         return result;
     }
 
-    public int countYearsOfMembership () {
+    public int countYearsOfMembership() {
         return membershipYears.size();
     }
 
-    public void addMembershipYear (int year) {
+    public void addMembershipYear(int year) {
         membershipYears.add(year);
     }
 
@@ -59,7 +59,7 @@ public class User {
         return this.age;
     }
 
-    public String getName () {
+    public String getName() {
         return name;
     }
 

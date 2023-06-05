@@ -1,4 +1,4 @@
-package demo;
+package be.ucll.usersrestapihibernate.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import be.ucll.usersrestapihibernate.domain.User;
+import be.ucll.usersrestapihibernate.service.ServiceException;
+import be.ucll.usersrestapihibernate.service.UserService;
 
 import org.springframework.http.HttpStatus;
 
@@ -35,7 +39,7 @@ public class UserRestController {
 
     // @GetMapping("/oldest")
     // public User getOldestUser() {
-    //     return userService.getOldestUser();
+    // return userService.getOldestUser();
     // }
 
     @GetMapping("/search/olderthan")
@@ -45,7 +49,7 @@ public class UserRestController {
 
     // @GetMapping("/search/{name}")
     // public User searchUserWithName(@PathVariable("name") String name) {
-    //     return userService.getUserWithName(name);
+    // return userService.getUserWithName(name);
     // }
 
     @PostMapping
@@ -54,7 +58,7 @@ public class UserRestController {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler({MethodArgumentNotValidException.class})
+    @ExceptionHandler({ MethodArgumentNotValidException.class })
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
         ex.getFieldErrors().forEach((error) -> {
@@ -62,17 +66,17 @@ public class UserRestController {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return errors;       
+        return errors;
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler({ServiceException.class})
+    @ExceptionHandler({ ServiceException.class })
     public Map<String, String> handleServiceExceptions(ServiceException ex) {
         Map<String, String> errors = new HashMap<>();
         String fieldName = ex.getField();
         String errorMessage = ex.getMessage();
         errors.put(fieldName, errorMessage);
-        return errors;       
+        return errors;
     }
 
 }

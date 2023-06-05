@@ -1,9 +1,12 @@
-package demo;
+package be.ucll.usersrestapihibernate.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import be.ucll.usersrestapihibernate.domain.User;
+import be.ucll.usersrestapihibernate.repo.UserRepository;
 
 @Service
 public class UserService {
@@ -23,19 +26,20 @@ public class UserService {
     }
 
     // public User getOldestUser() {
-    //     User oldest = null;
-    //     if (userRepository.size()>0) {
-    //         oldest = userRepository.get(0);
-    //         for (User user : userRepository) {
-    //             if (user.getAge() > oldest.getAge())
-    //                 oldest = user;
-    //         }
-    //     }
-    //     return oldest;
+    // User oldest = null;
+    // if (userRepository.size()>0) {
+    // oldest = userRepository.get(0);
+    // for (User user : userRepository) {
+    // if (user.getAge() > oldest.getAge())
+    // oldest = user;
+    // }
+    // }
+    // return oldest;
     // }
 
     // public User getUserWithName(String name) {
-    //     return userRepository.stream().filter(user -> user.getName().equals(name)).toList().get(0);
+    // return userRepository.stream().filter(user ->
+    // user.getName().equals(name)).toList().get(0);
     // }
 
     public User addUser(User user) throws ServiceException {
@@ -44,8 +48,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    private boolean alreadyUserWithName (String name) {
-        return userRepository.findByName(name)!=null;
+    private boolean alreadyUserWithName(String name) {
+        return userRepository.findByName(name) != null;
     }
 
 }
