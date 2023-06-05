@@ -6,6 +6,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import be.ucll.usersrestapipostjpa.domain.User;
+import be.ucll.usersrestapipostjpa.repo.UserRepository;
+import be.ucll.usersrestapipostjpa.service.UserService;
+
 import java.util.ArrayList;
 import java.util.List;
 
