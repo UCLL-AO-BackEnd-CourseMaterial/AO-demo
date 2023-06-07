@@ -33,13 +33,13 @@ public class UserTest {
     @Test
     void givenValidValues_whenCreatingUser_thenUserIsCreatedWithThoseValues() {
         // when
-        User elke = new User("Elke", 45);
+        User amelia = new User("Amelia", 45);
 
         // then
-        assertNotNull(elke);
-        assertEquals("Elke", elke.getName());
-        assertEquals(45, elke.getAge());
-        Set<ConstraintViolation<User>> violations = validator.validate(elke);
+        assertNotNull(amelia);
+        assertEquals("Amelia", amelia.getName());
+        assertEquals(45, amelia.getAge());
+        Set<ConstraintViolation<User>> violations = validator.validate(amelia);
         assertTrue(violations.isEmpty());
     }
 
@@ -49,10 +49,10 @@ public class UserTest {
     @Test
     void givenInvalidNegativeAge_whenCreatingUser_thenAgeViolationMessageIsThrown() {
         // when
-        User eric = new User("Eric", -5);
+        User ben = new User("Ben", -5);
 
         // then
-        Set<ConstraintViolation<User>> violations = validator.validate(eric);
+        Set<ConstraintViolation<User>> violations = validator.validate(ben);
         assertEquals(violations.size(), 1);
         ConstraintViolation<User> violation = violations.iterator().next();
         assertEquals("age may not be negative", violation.getMessage());
@@ -83,10 +83,10 @@ public class UserTest {
     @Test
     void givenInvalidNoName_whenCreatingUser_thenNameViolationMessageIsThrown() {
         // when
-        User eric = new User("", 65);
+        User ben = new User("", 65);
 
         // then
-        Set<ConstraintViolation<User>> violations = validator.validate(eric);
+        Set<ConstraintViolation<User>> violations = validator.validate(ben);
         assertEquals(violations.size(), 1);
         ConstraintViolation<User> violation = violations.iterator().next();
         assertEquals("name may not be empty", violation.getMessage());

@@ -78,15 +78,15 @@ public class UserServiceTest {
     }
 
     @Test
-    public void givenPatients_whenValidPatientAddedWithAlreadyUsedName_ThenPatientIsNotAddedAndErrorIsReturned() {
+    public void givenUsers_whenValidUserAddedWithAlreadyUsedName_ThenUserIsNotAddedAndErrorIsReturned() {
         // given
-        User elke = new User("Elke", 45);
-        User otherElke = new User("Elke", 45);
+        User chris = new User("Chris", 45);
+        User otherChris = new User("Chris", 45);
 
-        when(userRepository.findByName(elke.getName())).thenReturn(elke);
+        when(userRepository.findByName(chris.getName())).thenReturn(chris);
 
         // when
-        ServiceException ex = Assertions.assertThrows(ServiceException.class, () -> userService.addUser(otherElke));
+        ServiceException ex = Assertions.assertThrows(ServiceException.class, () -> userService.addUser(otherChris));
 
         // then
         assertEquals("name", ex.getField());
