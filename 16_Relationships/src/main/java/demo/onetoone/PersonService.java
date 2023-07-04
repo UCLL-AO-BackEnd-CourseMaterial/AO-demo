@@ -27,4 +27,12 @@ public class PersonService {
         personRepo.save(person);
         return person;
     }
+
+    public Address findAddress(Long id) {
+        return addressRepo.findById(id).orElseThrow(null);
+    }
+
+    public Person findPersonOfAddress(Long addressId) {
+        return findAddress(addressId).findPerson();
+    }
 }

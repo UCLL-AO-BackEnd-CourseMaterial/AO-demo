@@ -59,4 +59,8 @@ public class User {
         this.age = age;
     }
 
+    public String getGreeting() {
+        return "Hello " + name + "!";
+    }
+
 }

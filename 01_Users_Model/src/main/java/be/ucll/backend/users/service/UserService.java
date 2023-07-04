@@ -1,13 +1,10 @@
 package be.ucll.backend.users.service;
 
-import org.springframework.stereotype.Service;
-
 import be.ucll.backend.users.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 public class UserService {
 
     private List<User> userRepository = new ArrayList<>();
@@ -29,7 +26,14 @@ public class UserService {
     }
 
     public List<User> getUsersWithAgeOlderThan(int age) {
-        return userRepository.stream().filter(user -> user.getAge() > age).toList();
+        List<User> users = new ArrayList<User>();
+        for (User user : userRepository) {
+            if (user.getAge() > age)
+                users.add(user);
+        }
+        return users;
+
+        // return userRepository.stream().filter(user -> user.getAge() > age).toList();
     }
 
     public User getOldestUser() {
@@ -49,6 +53,7 @@ public class UserService {
             return userRepository.stream().filter(user -> user.getName().equals(name)).toList().get(0);
         else
             return null;
+
     }
 
     public boolean addUser(User user) {

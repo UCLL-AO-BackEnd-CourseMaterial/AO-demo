@@ -19,4 +19,14 @@ public class PersonController {
     public Person addAddressToPerson(@RequestParam Long personId, @RequestBody Address address) {
         return personService.addAddressToPerson(personId, address);
     }
+
+    @GetMapping("/address/{id}")
+    public Address findAddress(@PathVariable Long id) {
+        return personService.findAddress(id);
+    }
+
+    @GetMapping("/address/person/{addressId}")
+    public Person findPersonOfAddress(@PathVariable Long addressId) {
+        return personService.findPersonOfAddress(addressId);
+    }
 }

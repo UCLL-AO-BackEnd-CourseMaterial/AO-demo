@@ -18,8 +18,8 @@ public class Address {
 
     private String postalCode;
 
-    // @OneToOne(mappedBy = "address")
-    // private Person person;
+    @OneToOne(mappedBy = "address")
+    private Person person;
 
     public Long getId() {
         return id;
@@ -59,5 +59,9 @@ public class Address {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public Person findPerson() {
+        return this.person;
     }
 }

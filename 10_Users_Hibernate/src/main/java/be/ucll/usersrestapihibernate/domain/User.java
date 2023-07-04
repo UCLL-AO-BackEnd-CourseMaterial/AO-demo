@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +22,7 @@ public class User {
     public long id;
 
     @NotBlank(message = "name may not be empty")
+    @Size(min = 3)
     private String name;
 
     @Positive(message = "age may not be negative")

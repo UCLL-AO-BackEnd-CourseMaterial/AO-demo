@@ -1,9 +1,12 @@
 package demo.manytomany;
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Toy {
@@ -14,7 +17,8 @@ public class Toy {
 
     private String name;
 
-    // private Set<Dog> favoritedBy;
+    @ManyToMany(mappedBy = "favoriteToys")
+    private Set<Dog> favoritedBy;
 
     public Long getId() {
         return id;
