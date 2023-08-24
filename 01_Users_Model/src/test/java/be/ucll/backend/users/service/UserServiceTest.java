@@ -29,12 +29,12 @@ class UserServiceTest {
         assertEquals(4, service.getAllUsers().size());
 
         // when
-        User amelia = new User("Amelia", 44);
-        service.addUser(amelia);
+        User emma = new User("Emma", 44);
+        service.addUser(emma);
 
         // then
         assertEquals(5, service.getAllUsers().size());
-        assertTrue(service.getAllUsers().contains(amelia));
+        assertTrue(service.getAllUsers().contains(emma));
     }
 
     @Test
