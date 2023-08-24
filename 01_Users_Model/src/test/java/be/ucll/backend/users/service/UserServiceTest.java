@@ -1,5 +1,6 @@
 package be.ucll.backend.users.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import be.ucll.backend.users.domain.User;
@@ -12,11 +13,15 @@ class UserServiceTest {
 
     UserService service = new UserService();
 
+    @BeforeEach
+    public void setUp() {
+        service = new UserService();
+        service.getAllUsers().clear(); // remove all users added in constructor
+    }
+
     @Test
     void given4Users_whenNewUserIsAdded_thenUserIsAdded() {
         // given
-        UserService service = new UserService();
-        service.getAllUsers().clear(); // remove all users added in constructor
         service.addUser(new User("Amelia", 44));
         service.addUser(new User("Ben", 15));
         service.addUser(new User("Charles", 65));
@@ -35,8 +40,6 @@ class UserServiceTest {
     @Test
     void given4UsersWhere2UsersWithAge44_whenSearchForUsersOfAgeAfter43_then2UsersAreReturned() {
         // given
-        UserService service = new UserService();
-        service.getAllUsers().clear(); // remove all users added in constructor
         service.addUser(new User("Amelia", 44));
         service.addUser(new User("Ben", 15));
         service.addUser(new User("Charles", 65));
@@ -55,8 +58,6 @@ class UserServiceTest {
     @Test
     void given4Users_whenSearchForOldestUser_thenOldestUserIsReturned() {
         // given
-        UserService service = new UserService();
-        service.getAllUsers().clear(); // remove all users added in constructor
         service.addUser(new User("Amelia", 44));
         service.addUser(new User("Ben", 15));
         service.addUser(new User("Charles", 65));
@@ -73,8 +74,6 @@ class UserServiceTest {
     @Test
     void given4Users_whenSearchForUserWithNameCharles_thenUserCharlesIsReturned() {
         // given
-        UserService service = new UserService();
-        service.getAllUsers().clear(); // remove all users added in constructor
         service.addUser(new User("Amelia", 44));
         service.addUser(new User("Ben", 15));
         service.addUser(new User("Charles", 65));
@@ -91,10 +90,6 @@ class UserServiceTest {
 
     @Test
     void givenEmptyService_whenSearchForUserWithNameCharles_thenNullIsReturned() {
-        // given
-        UserService service = new UserService();
-        service.getAllUsers().clear(); // remove all users added in constructor
-
         // when
         User userCharles = service.getUserWithName("Charles");
 
