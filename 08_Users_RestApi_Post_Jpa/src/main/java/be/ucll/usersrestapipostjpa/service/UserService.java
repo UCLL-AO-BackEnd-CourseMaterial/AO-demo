@@ -26,22 +26,13 @@ public class UserService {
         return userRepository.findUsersByAgeAfter(age);
     }
 
-    // public User getOldestUser() {
-    // User oldest = null;
-    // if (userRepository.size()>0) {
-    // oldest = userRepository.get(0);
-    // for (User user : userRepository) {
-    // if (user.getAge() > oldest.getAge())
-    // oldest = user;
-    // }
-    // }
-    // return oldest;
-    // }
+    public User getOldestUser() {
+        return userRepository.findFirstByOrderByAgeDesc();
+    }
 
-    // public User getUserWithName(String name) {
-    // return userRepository.stream().filter(user ->
-    // user.getName().equals(name)).toList().get(0);
-    // }
+    public User getUserWithName(String name) {
+        return userRepository.findUserByName(name);
+    }
 
     public User addUser(User user) {
         return userRepository.save(user);
