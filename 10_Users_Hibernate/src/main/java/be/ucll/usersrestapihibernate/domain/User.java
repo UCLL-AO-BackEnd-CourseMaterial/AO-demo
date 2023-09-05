@@ -22,7 +22,6 @@ public class User {
     public long id;
 
     @NotBlank(message = "name may not be empty")
-    @Size(min = 3)
     private String name;
 
     @Positive(message = "age may not be negative")

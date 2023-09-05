@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,20 +38,20 @@ public class UserRestController {
         return userService.getAllUsers();
     }
 
-    // @GetMapping("/oldest")
-    // public User getOldestUser() {
-    // return userService.getOldestUser();
-    // }
+    @GetMapping("/oldest")
+    public User getOldestUser() {
+        return userService.getOldestUser();
+    }
 
     @GetMapping("/search/olderthan")
     public List<User> searchUsersWithAgeOlderThan(@RequestParam("age") int age) {
         return userService.getUsersWithAgeOlderThan(age);
     }
 
-    // @GetMapping("/search/{name}")
-    // public User searchUserWithName(@PathVariable("name") String name) {
-    // return userService.getUserWithName(name);
-    // }
+    @GetMapping("/search/{name}")
+    public User searchUserWithName(@PathVariable("name") String name) {
+        return userService.getUserWithName(name);
+    }
 
     @PostMapping
     public User addUser(@Valid @RequestBody User user) throws ServiceException {

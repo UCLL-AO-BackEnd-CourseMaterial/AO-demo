@@ -31,24 +31,25 @@ public class UserServiceTest {
     @Test
     public void givenNoUsers_whenValidUserAdded_ThenUserIsAddedAndUserIsReturned() throws ServiceException {
         // given
-        User elke = new User("Elke", 45);
+        User amelia = new User("Amelia", 45);
         // mock all methods that are called in method that is tested here
-        when(userRepository.save(any())).thenReturn(elke);
+        when(userRepository.save(amelia)).thenReturn(amelia);
 
         // when
-        User addedUser = userService.addUser(elke);
+        User addedUser = userService.addUser(amelia);
 
         // then
-        assertThat(elke.getName()).isSameAs(addedUser.getName());
+        assertEquals(amelia.getName(), addedUser.getName());
+
     }
 
     @Test
     public void givenUsersWhith1UserOlderThan20_whenGetUsersOlderThan20_thenListWith1UserOlderThan20IsReturned() {
         // given
-        User elke = new User("Elke", 45);
-        User miyo = new User("Miyo", 15);
+        User amelia = new User("Amelia", 45);
+        User ben = new User("Ben", 15);
         List<User> usersAbove20 = new ArrayList<User>();
-        usersAbove20.add(elke);
+        usersAbove20.add(amelia);
         when(userRepository.findUsersByAgeAfter(20)).thenReturn(usersAbove20);
 
         // when
@@ -56,15 +57,15 @@ public class UserServiceTest {
 
         // then
         assertEquals(usersAbove20.size(), result.size());
-        assertTrue(result.contains(elke));
-        assertFalse(result.contains(miyo));
+        assertTrue(result.contains(amelia));
+        assertFalse(result.contains(ben));
     }
 
     @Test
     public void givenUsersWhithNoUsersOlderThan20_whenGetUsersOlderThan20_thenEmptyListIsReturned() {
         // given
-        User yuki = new User("Yuki", 13);
-        User miyo = new User("Miyo", 15);
+        User ben = new User("Ben", 13);
+        User diana = new User("Diana", 15);
         List<User> usersAbove20 = new ArrayList<User>();
         when(userRepository.findUsersByAgeAfter(20)).thenReturn(usersAbove20);
 
@@ -73,20 +74,20 @@ public class UserServiceTest {
 
         // then
         assertEquals(usersAbove20.size(), result.size());
-        assertFalse(result.contains(yuki));
-        assertFalse(result.contains(miyo));
+        assertFalse(result.contains(ben));
+        assertFalse(result.contains(diana));
     }
 
     @Test
     public void givenUsers_whenValidUserAddedWithAlreadyUsedName_ThenUserIsNotAddedAndErrorIsReturned() {
         // given
-        User chris = new User("Chris", 45);
-        User otherChris = new User("Chris", 45);
+        User ben = new User("Ben", 45);
+        User otherBen = new User("Ben", 45);
 
-        when(userRepository.findByName(chris.getName())).thenReturn(chris);
+        when(userRepository.findUserByName(ben.getName())).thenReturn(ben);
 
         // when
-        ServiceException ex = Assertions.assertThrows(ServiceException.class, () -> userService.addUser(otherChris));
+        ServiceException ex = Assertions.assertThrows(ServiceException.class, () -> userService.addUser(otherBen));
 
         // then
         assertEquals("name", ex.getField());

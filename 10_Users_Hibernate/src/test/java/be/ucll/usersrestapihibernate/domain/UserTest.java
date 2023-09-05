@@ -14,6 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
 
+    // given
+    private String validNameAmelia = "Amelia";
+    private int validAgeAmelia = 44;
+
     private static ValidatorFactory validatorFactory;
     private static Validator validator;
 
@@ -33,12 +37,12 @@ public class UserTest {
     @Test
     void givenValidValues_whenCreatingUser_thenUserIsCreatedWithThoseValues() {
         // when
-        User amelia = new User("Amelia", 45);
+        User amelia = new User(validNameAmelia, validAgeAmelia);
 
         // then
         assertNotNull(amelia);
-        assertEquals("Amelia", amelia.getName());
-        assertEquals(45, amelia.getAge());
+        assertEquals(validNameAmelia, amelia.getName());
+        assertEquals(validAgeAmelia, amelia.getAge());
         Set<ConstraintViolation<User>> violations = validator.validate(amelia);
         assertTrue(violations.isEmpty());
     }
@@ -49,11 +53,11 @@ public class UserTest {
     @Test
     void givenInvalidNegativeAge_whenCreatingUser_thenAgeViolationMessageIsThrown() {
         // when
-        User ben = new User("Ben", -5);
+        User invalidAmelia = new User(validNameAmelia, -5);
 
         // then
-        Set<ConstraintViolation<User>> violations = validator.validate(ben);
-        assertEquals(violations.size(), 1);
+        Set<ConstraintViolation<User>> violations = validator.validate(invalidAmelia);
+        assertEquals(1, violations.size());
         ConstraintViolation<User> violation = violations.iterator().next();
         assertEquals("age may not be negative", violation.getMessage());
         assertEquals("age", violation.getPropertyPath().toString());
@@ -66,11 +70,11 @@ public class UserTest {
     @Test
     void givenInvalidEmptyName_whenCreatingUser_thenNameViolationMessageIsThrown() {
         // when
-        User eric = new User("    ", 65);
+        User paul = new User("    ", 65);
 
         // then
-        Set<ConstraintViolation<User>> violations = validator.validate(eric);
-        assertEquals(violations.size(), 1);
+        Set<ConstraintViolation<User>> violations = validator.validate(paul);
+        assertEquals(1, violations.size());
         ConstraintViolation<User> violation = violations.iterator().next();
         assertEquals("name may not be empty", violation.getMessage());
         assertEquals("name", violation.getPropertyPath().toString());
@@ -83,11 +87,11 @@ public class UserTest {
     @Test
     void givenInvalidNoName_whenCreatingUser_thenNameViolationMessageIsThrown() {
         // when
-        User ben = new User("", 65);
+        User paul = new User("", 65);
 
         // then
-        Set<ConstraintViolation<User>> violations = validator.validate(ben);
-        assertEquals(violations.size(), 1);
+        Set<ConstraintViolation<User>> violations = validator.validate(paul);
+        assertEquals(1, violations.size());
         ConstraintViolation<User> violation = violations.iterator().next();
         assertEquals("name may not be empty", violation.getMessage());
         assertEquals("name", violation.getPropertyPath().toString());
