@@ -3,6 +3,8 @@ package demo.onetoone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonService {
 
@@ -11,6 +13,8 @@ public class PersonService {
 
     @Autowired
     private AddressRepo addressRepo;
+
+    public List<Person> getPersons() { return  personRepo.findAll();}
 
     public Person addPerson(Person person) {
         return personRepo.save(person);

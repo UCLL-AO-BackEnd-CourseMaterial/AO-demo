@@ -29,7 +29,7 @@ public class PersonTest {
     }
 
     @Test
-    public void givenValidPersonAndAddres_whenAddressSetToPerson_thenPersonHasAddress() {
+    public void givenValidPersonAndAddress_whenAddressSetToPerson_thenPersonHasAddress() {
         validPerson.setAddress(validAddress);
         assertNotNull(validPerson.getAddress());
         assertEquals(validAddress.getStreet(), validPerson.getAddress().getStreet());
