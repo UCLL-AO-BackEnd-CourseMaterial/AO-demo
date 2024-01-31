@@ -4,7 +4,9 @@ import be.ucll.backend.users.domain.User;
 import be.ucll.backend.users.service.UserService;
 
 public class MainMethod {
+
     public static void main(String[] args) {
+
         System.out.println("Hello World");
 
         String word = "abc";
